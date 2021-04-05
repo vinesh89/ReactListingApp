@@ -1,0 +1,6 @@
+{
+    "could_not_load_title": "Could not load information",
+    "could_not_load_body": "Please try again later, if the issue persists please reach out to the support team.",
+    "network_error_title": "Network Error",
+    "network_error_body": "Please check your network connection and try again later."
+}
