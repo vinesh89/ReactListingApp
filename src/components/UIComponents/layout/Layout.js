@@ -7,11 +7,9 @@ const ContentLayout = styled.div`
 
 const Layout = (props) => {
     return (
-        <div>
-            <ContentLayout>
-                {props.children}
-            </ContentLayout>
-        </div>
+        <ContentLayout>
+            {props.children}
+        </ContentLayout>
     )
 }
 

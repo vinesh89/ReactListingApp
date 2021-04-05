@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../store/actions/index';
 import TransactionList from '../components/transactions/TransactionListing';
 import ErrorHandler from '../components/errorHandler/ErrorHandler';
+import { getTransactions, getTransactionsErrorStatus, getTransactionsErrorResponse } from '../store/selectors';
 
 const TransactionListingPage = (props) => {
     const dispatch = useDispatch();
-    const transactionsList = useSelector(state => state.accounts.transactions);
-    const errorStatus = useSelector(state => state.accounts.error);
-    const errorResponse = useSelector(state => state.accounts.errorResponse);
+    const transactionsList = useSelector(getTransactions);
+    const errorStatus = useSelector(getTransactionsErrorStatus);
+    const errorResponse = useSelector(getTransactionsErrorResponse);
     const getTransactionsList = useCallback((id) => 
         dispatch(actions.fetchTransactions(id)), [dispatch]
     );
@@ -21,7 +22,7 @@ const TransactionListingPage = (props) => {
 
     const handleItemClick = (item) => {
         props.history.push({
-            pathname: "/transactionDetail",
+            pathname: `/transactionDetail/${item.id}`,
             state: item
         })
     }

@@ -4,13 +4,14 @@ import { withRouter } from 'react-router-dom';
 import * as actions from '../store/actions/index';
 import AccountList from '../components/accounts/AccountsListing';
 import ErrorHandler from '../components/errorHandler/ErrorHandler';
+import { getAccount, getAccountErrorStatus, getAccountErrorResponse } from '../store/selectors'
 
-const AccountsListingPage = (props) => {
+const AccountsListingPage = ({history, ...props}) => {
 
     const dispatch = useDispatch();
-    const accountsList = useSelector(state => state.accounts.accounts);
-    const errorStatus = useSelector(state => state.accounts.error);
-    const errorResponse = useSelector(state => state.accounts.errorResponse);
+    const accountsList = useSelector(getAccount);
+    const errorStatus = useSelector(getAccountErrorStatus);
+    const errorResponse = useSelector(getAccountErrorResponse);
     const getAccountsList = useCallback(() => 
         dispatch(actions.fetchAccounts()), [dispatch]
     );
@@ -20,30 +21,32 @@ const AccountsListingPage = (props) => {
     }, [getAccountsList]);
 
     const handleItemClick = (item) => {
-        props.history.push({
+        history.push({
             pathname: "/transaction",
             state: item
         });
     }
 
-    let loadAccountsList = <h1>Loading Accounts List ...</h1>
+    const renderAccountsList = () => {
+        if(errorStatus) {
+            return(
+                <ErrorHandler errorStatus={errorResponse.response.status} />
+            )
+        }
 
-    if(errorStatus) {
-        loadAccountsList = (
-            <ErrorHandler errorStatus={errorResponse.response.status} />
-        )
-    }
+        if(accountsList) {
+            return(
+                <AccountList listItems={accountsList} onClick={handleItemClick}/>
+            );
+        }
 
-    if(accountsList) {
-        loadAccountsList = (
-            <AccountList listItems={accountsList} onClick={handleItemClick}/>
-        );
+        return <h1>Loading Accounts List ...</h1>
     }
 
     return(
-        <div>
-            {loadAccountsList}
-        </div>
+        <>
+            {renderAccountsList()}
+        </>
     )
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 import Colors from '../../../styles/colors';
 import LogoImg from '../../../assets/logo/reactLogo.svg';
+import { withRouter } from 'react-router-dom';
 
 const Header = Styled.header`
     display: flex;
@@ -29,17 +30,16 @@ const Logo = Styled.img`
     @media (max-width: 500px) {
         padding: 0px 15px;
     }
-    
 `
 
 const PageHeader = (props) => {
-    const { title } = props;
+    const { title, history } = props;
     return (
         <Header>
-            <Logo src={LogoImg} alt="React Logo" />
+            <Logo src={LogoImg} alt="React Logo" onClick={() => history.replace('/')}/>
             <Title>{title}</Title>
         </Header>
     )
 }
 
-export default PageHeader;
+export default withRouter(PageHeader);

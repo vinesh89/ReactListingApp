@@ -20,7 +20,7 @@ const RoutesRoot = () => {
             <Switch>
                 <Route path="/" exact component={withTitleHeader({component: AccountsListingPage, title: "Accounts"})} />
                 <Route path="/transaction" component={withTitleHeader({component: TransactionListingPage, title: "Transactions"})} />
-                <Route path="/transactionDetail" exact component={withTitleHeader({component: TransactionDetailPage, title: "Transaction Detail"})} />
+                <Route path="/transactionDetail/:id" exact component={withTitleHeader({component: TransactionDetailPage, title: "Transaction Detail"})} />
             </Switch>
         </Router>
     )
