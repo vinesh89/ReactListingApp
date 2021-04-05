@@ -16,7 +16,7 @@ const TransactionDetailPage = React.lazy(() => {
 
 const RoutesRoot = () => {
     return(
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Switch>
                 <Route path="/" exact component={withTitleHeader({component: AccountsListingPage, title: "Accounts"})} />
                 <Route path="/transaction" component={withTitleHeader({component: TransactionListingPage, title: "Transactions"})} />
