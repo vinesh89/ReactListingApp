@@ -5,21 +5,17 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
-        <ul
-          class="sc-bdvvaa hbodIx"
-          data-testid="accounts-list"
-        />
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div>
       <ul
         class="sc-bdvvaa hbodIx"
         data-testid="accounts-list"
       />
     </div>
+  </body>,
+  "container": <div>
+    <ul
+      class="sc-bdvvaa hbodIx"
+      data-testid="accounts-list"
+    />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
