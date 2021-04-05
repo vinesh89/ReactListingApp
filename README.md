@@ -43,6 +43,8 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 Scans the source code for any Linking Errors or Warnings
 
+## Build app for Production
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
