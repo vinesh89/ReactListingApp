@@ -17,7 +17,7 @@ const TransactionDetailPage = () => {
             <h3>Transaction Date</h3>
             <h4>{getFormattedDate(transaction_date)}</h4>
             <h3>Transaction Processed Status</h3>
-            <h4>{transaction_processed}</h4>
+            <h4>{transaction_processed ? "Yes" : "No"}</h4>
             <h3>Amount</h3>
             <h4>{amount}</h4>
         </ListItem>
